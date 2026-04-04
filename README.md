@@ -28,13 +28,13 @@ src/
     └── SoundPlayer.java      # Lecture du fichier audio et arrêt interactif
 ```
 
-| Classe | Responsabilité |
-|---|---|
-| `Main` | Instancie les composants et lance l'application |
+| Classe            | Responsabilité                                        |
+|-------------------|-------------------------------------------------------|
+| `Main`            | Instancie les composants et lance l'application       |
 | `TimeInputReader` | Boucle de saisie avec validation du format `HH:mm:ss` |
-| `AlarmClock` | Coordonne le scheduler et le lecteur audio |
-| `AlarmScheduler` | Gère le `ScheduledExecutorService` (horloge + alarme) |
-| `SoundPlayer` | Joue le son `.wav` et attend l'arrêt utilisateur |
+| `AlarmClock`      | Coordonne le scheduler et le lecteur audio            |
+| `AlarmScheduler`  | Gère le `ScheduledExecutorService` (horloge + alarme) |
+| `SoundPlayer`     | Joue le son `.wav` et attend l'arrêt utilisateur      |
 
 ---
 
