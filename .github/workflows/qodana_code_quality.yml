@@ -1,0 +1,53 @@
+#-------------------------------------------------------------------------------#
+#            Discover all capabilities of Qodana in our documentation           #
+#             https://www.jetbrains.com/help/qodana/about-qodana.html           #
+#-------------------------------------------------------------------------------#
+
+name: Qodana
+
+on:
+  workflow_dispatch:
+
+  pull_request:
+
+  push:
+    branches:
+      - main
+
+jobs:
+  qodana:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+      pull-requests: write
+      checks: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Qodana Scan
+        uses: JetBrains/qodana-action@v2026.2
+        env:
+          QODANA_TOKEN: ${{ secrets.QODANA_TOKEN }}
+        with:
+          # Analyse complète du projet
+          pr-mode: false
+
+          # Utilisation du cache pour accélérer les analyses
+          use-caches: true
+
+          # Publier les résultats dans les Pull Requests
+          post-pr-comment: true
+
+          # Afficher les problèmes comme annotations GitHub
+          use-annotations: true
+
+          # Ne pas sauvegarder les résultats comme artifacts
+          upload-result: false
+
+          # Ne pas appliquer/pousser automatiquement de corrections
+          push-fixes: "none"
