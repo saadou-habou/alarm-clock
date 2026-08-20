@@ -34,20 +34,9 @@ jobs:
         env:
           QODANA_TOKEN: ${{ secrets.QODANA_TOKEN }}
         with:
-          # Analyse complète du projet
           pr-mode: false
-
-          # Utilisation du cache pour accélérer les analyses
           use-caches: true
-
-          # Publier les résultats dans les Pull Requests
           post-pr-comment: true
-
-          # Afficher les problèmes comme annotations GitHub
           use-annotations: true
-
-          # Ne pas sauvegarder les résultats comme artifacts
           upload-result: false
-
-          # Ne pas appliquer/pousser automatiquement de corrections
           push-fixes: "none"
