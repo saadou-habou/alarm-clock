@@ -1,10 +1,37 @@
-####################################################################################################################
-# WARNING: Do not store sensitive information in this file, as its contents will be included in the Qodana report. #
-####################################################################################################################
+#-------------------------------------------------------------------------------#
+#               Qodana analysis is configured by qodana.yaml                   #
+#             https://www.jetbrains.com/help/qodana/qodana-yaml.html          #
+#-------------------------------------------------------------------------------#
+
+#################################################################################
+# WARNING: Do not store sensitive information in this file, as its contents    #
+# will be included in the Qodana report.                                        #
+#################################################################################
 
 version: "1.0"
-linter: qodana-jvm-community
+
+# Inspection profile
 profile:
   name: qodana.recommended
+
+# Qodana linter for Java/Kotlin/JVM projects
+linter: jetbrains/qodana-jvm-community:2026.2
+
+# Project JDK
+projectJDK: "25"
+
+# Additional inspections
 include:
   - name: CheckDependencyLicenses
+
+# Quality gate
+# Uncomment and configure these rules if you want Qodana
+# to fail the CI pipeline when thresholds are exceeded.
+#
+# failureConditions:
+#   severityThresholds:
+#     any: 15
+#     critical: 5
+#   dependencyLicenses:
+#     failOnProhibited: true
+#     failOnUnknown: false
